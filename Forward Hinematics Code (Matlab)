@@ -1,0 +1,123 @@
+The code of forward kinematic in MATLAB for Universal Robot Arm (UR10)
+%Universal_Robot_UR10
+%ForwardKinematic
+d1 =  0.1273;
+a2 = -0.612;
+a3 = -0.5723;
+d4 =  0.163941;
+d5 =  0.1157;
+d6 =  0.0922;
+th1 = input("Theta1: ");
+th2 = input("Theta2: ");
+th3 = input("Theta3: ");
+th4 = input("Theta4: ");
+th5 = input("Theta5: ");
+th6 = input("Theta6: ");
+%joint_1
+Trans_x1 = [1 0 0 0 
+           0 1 0 0 
+           0 0 1 0 
+           0 0 0 1];
+Rot_x1 = [1 0 0 0
+         0 cos(0) -sin(0) 0
+         0 sin(0) -cos(0) 0
+         0 0 0 1];
+Trans_z1 = [1 0 0 0
+           0 1 0 0
+           0 0 1 d1
+           0 0 0 1];
+Rot_z1 = [cos(th1) -sin(th1) 0 0
+         sin(th1) cos(th1) 0 0
+         0 0 1 0
+         0 0 0 1];
+ 
+%joint_2
+Trans_x2 = [1 0 0 a2 
+           0 1 0 0 
+           0 0 1 0 
+           0 0 0 1];
+Rot_x2 = [1 0 0 0
+         0 cos(th2) -sin(th2) 0
+         0 sin(th2) -cos(th2) 0
+         0 0 0 1];
+Trans_z2 = [1 0 0 0
+           0 1 0 0
+           0 0 1 0
+           0 0 0 1];
+Rot_z2 = [cos(0) -sin(0) 0 0
+         sin(0) cos(0) 0 0
+         0 0 1 0
+         0 0 0 1];
+ 
+%joint_3
+Trans_x3 = [1 0 0 a3
+           0 1 0 0 
+           0 0 1 0 
+           0 0 0 1];
+Rot_x3 = [1 0 0 0
+         0 cos(th3) -sin(th3) 0
+         0 sin(th3) -cos(th3) 0
+         0 0 0 1];
+Trans_z3 = [1 0 0 0
+           0 1 0 0
+           0 0 1 0
+           0 0 0 1];
+Rot_z3 = [cos(0) -sin(0) 0 0
+         sin(0) cos(0) 0 0
+         0 0 1 0
+         0 0 0 1];
+ 
+%joint_4
+Trans_x4 = [1 0 0 0 
+           0 1 0 0 
+           0 0 1 0 
+           0 0 0 1];
+Rot_x4 = [1 0 0 0
+         0 cos(th4) -sin(th4) 0
+         0 sin(th4) -cos(th4) 0
+         0 0 0 1];
+Trans_z4 = [1 0 0 0
+           0 1 0 0
+           0 0 1 d4
+           0 0 0 1];
+Rot_z4 = [cos(0) -sin(0) 0 0
+         sin(0) cos(0) 0 0
+         0 0 1 0
+         0 0 0 1];
+ 
+%joint_5
+Trans_x5 = [1 0 0 0 
+           0 1 0 0 
+           0 0 1 0 
+           0 0 0 1];
+Rot_x5 = [1 0 0 0
+         0 cos(0) -sin(0) 0
+         0 sin(0) -cos(0) 0
+         0 0 0 1];
+Trans_z5 = [1 0 0 0
+           0 1 0 0
+           0 0 1 d5
+           0 0 0 1];
+Rot_z5 = [cos(th5) -sin(th5) 0 0
+         sin(th5) cos(th5) 0 0
+         0 0 1 0
+         0 0 0 1];
+ 
+%joint_6
+Trans_x6 = [1 0 0 0 
+           0 1 0 0 
+           0 0 1 0 
+           0 0 0 1];
+Rot_x6 = [1 0 0 0
+         0 cos(th6) -sin(th6) 0
+         0 sin(th6) -cos(th6) 0
+         0 0 0 1];
+Trans_z6 = [1 0 0 0
+           0 1 0 0
+           0 0 1 d6
+           0 0 0 1];
+Rot_z6 = [cos(0) -sin(0) 0 0
+         sin(0) cos(0) 0 0
+         0 0 1 0
+         0 0 0 1];
+DH = Trans_x1*Rot_x1*Trans_z1*Rot_z1*Trans_x2*Rot_x2*Trans_z2*Rot_z2*Trans_x3*Rot_x3*Trans_z3*Rot_z3*Trans_x4*Rot_x4*Trans_z4*Rot_z4*Trans_x5*Rot_x5*Trans_z5*Rot_z5*Trans_x6*Rot_x6*Trans_z6*Rot_z6;
